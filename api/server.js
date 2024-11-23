@@ -7,9 +7,12 @@ import practicalRoutes from '../routes/practicalRoutes.js';  // Import practical
 dotenv.config();
 
 const app = express();
+// Start the server
+app.use(express.json());
+const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON data
-app.use(express.json());
+
 
 // Connect to MongoDB
 connectDB();
@@ -23,8 +26,7 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// Start the server
-const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
